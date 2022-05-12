@@ -117,7 +117,7 @@ const renderInstructionMarkup = (journey)=>{
 
 const loadJourney = async function(link){
    try{
-      const res = await fetch(url2)
+      const res = await fetch(link)
       
       const data = await res.json();
 
@@ -274,7 +274,7 @@ const loadJourney = async function(link){
 }
 
 
-loadJourney();
+// loadJourney();
 
 btn.addEventListener('click',function(e){
    e.preventDefault();
@@ -282,9 +282,9 @@ btn.addEventListener('click',function(e){
    //    alert('💩')
    // }
 
-   console.log(startLocationfield.textContent,arrivalLocationfield.textContent)
+   // console.log(startLocationfield.textContent,arrivalLocationfield.textContent)
 
    // else{
-      // loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
+      loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
    // }
 })

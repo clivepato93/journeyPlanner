@@ -94,9 +94,9 @@ form{
     width: 100%;
 }
 
-.inputfield:nth-of-type(2){
+/* .inputfield:nth-of-type(2){
     align-self: flex-end;
-}
+} */
 
 .sub{
     min-width: 10rem;
