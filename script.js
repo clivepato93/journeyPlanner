@@ -8,28 +8,19 @@ const resultsContainer = document.querySelector('.results');
 const getHour = (date) => `${new Date(date).getHours()}`.padStart(2,0);
 const getMinutes = (date) => `${new Date(date).getMinutes()}`.padStart(2,0);
 // Price of travel
-const getPrice = (value) => `${value}`.slice(0,-2)+'.'+`${value}`.slice(-2)
+const getPrice = (value) => `${value}`.slice(0,-2)+'.'+`${value}`.slice(-2);
+
+
+
+// click event
 const btn = document.querySelector('.sub');
 
+//address fields
 const startLocationfield = document.querySelector(".startAddress");
 const arrivalLocationfield = document.querySelector(".arrivalAddress");
-
-btn.addEventListener('click',function(e){
-   e.preventDefault();
-   // if(!startLocationfield.textContent||!arrivalLocationfield.textContent){
-   //    alert('💩')
-   // }
-
-   // else{
-      // loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.textContent}/to/${arrivalLocationfield.textContent}`)
-   // }
-})
-
-
-// window.addEventListener('resize',function () {
-//    console.log(window.innerWidth) 
-// } )
-
+// address strings
+let startPoint;
+let endPoint;
 
 const renderInstructionMarkup = (journey)=>{
    
@@ -102,18 +93,18 @@ const renderInstructionMarkup = (journey)=>{
       }
 
       return instruction+info+'</ul></div>'
-      // return instruction
+
             
    }).join('\n')
-   // const instructions = journey.s
-   // console.log(markUpHeading + journeysMarkup + '</div>')
+
+
    return markUpHeading + journeysMarkup + '</div>'
-   // return markUpHeading
+
 }
 
 const loadJourney = async function(link){
    try{
-      const res = await fetch(url2)
+      const res = await fetch(link)
       
       const data = await res.json();
 
@@ -129,7 +120,6 @@ const loadJourney = async function(link){
          const arrivalMinutes = getMinutes(journey.arrivalDateTime);
          const totalFare = journey.fare?+getPrice(journey.fare.totalCost):0;
          const totalString = journey.fare?getPrice(journey.fare.totalCost):0;
-         // console.log(journey)
 
          journey = {
             destination:to,
@@ -141,7 +131,7 @@ const loadJourney = async function(link){
             totalString:totalString
          }
 
-         // console.log(journey)
+
 
          journey.instructions = journey.instructions.map((instruct,i)=>{
       
@@ -175,84 +165,8 @@ const loadJourney = async function(link){
       })
 
       console.log(trips)
-// console.log(test)
-      
-      // how each one should be broken down
-      // let firstJourney = journeys[0];
-      // console.log( journeys[0],to);
-      // const depatureHours = getHour(firstJourney.startDateTime);
-      // const depatureMinutes = getMinutes(firstJourney.startDateTime);
-      // const arrivalHours = getHour(firstJourney.arrivalDateTime);
-      // const arrivalMinutes = getMinutes(firstJourney.arrivalDateTime);
-      // const totalFare = firstJourney.fare?getPrice(firstJourney.fare.totalCost):0;
-      // console.log(totalCost)
-
-
-      // firstJourney = {
-      //       destination:to,
-      //       instructions:firstJourney.legs,
-      //       depatureTime: `${depatureHours}:${depatureMinutes}`,
-      //       arrivalTime:`${arrivalHours}:${arrivalMinutes}`,
-      //       duration:firstJourney.duration,
-      //       totalCost:totalFare,
-      //    }
-
-
-      // return an array of instructions
-      // const instructions = firstJourney.instructions.map((instruct,i)=>{
-
-      //    let direction = instruct;
-      //    direction = {
-      //       duration:direction.duration,
-      //       mode:direction.mode.name=='walking'?'walk':`Get the ${direction.mode.name}`,
-      //       instructions:direction.instruction,
-      //       departureTime: `${getHour(direction.departureTime)}:${getMinutes(direction.departureTime)}`,
-      //       arrivalTime: `${getHour(direction.arrivalTime)}:${getMinutes(direction.arrivalTime)}`,
-      //       detailed:direction.instruction.detailed,
-      //       steps:direction.instruction.steps,
-      //    } 
-      //    direction.stops = !direction.mode.includes('walk')?instruct.path.stopPoints:'';
-
-
-      // return direction
-
-      //       })
-
-
-      // console.log(instructions)
 
       const testingMarkup = trips.map(trip=> renderInstructionMarkup(trip))
-
-      // const testingMarkup = trips.slice(0,2).map(trip=> renderInstructionMarkup(trip))
-
-      // const testingMarkup = trips.slice(0,2).map(trip=> renderInstructionMarkup(trip))
-      // const testingMarkup = renderInstructionMarkup( trips[0])
-      // testingMarkup.join('')
-      // console.log(testingMarkup.join(' '))
-
-      // const markup = 
-      // `
-      // <div class="result">
-      // <div class="header">
-      // <section class="title">
-      //    <h1 class="sectionTitle">Journey to ${firstJourney.destination}</h1>
-      //    <div class="times">
-      //       <h3>
-      //       <span class="depature-time">${firstJourney.depatureTime}</span> to 
-      //       <span class="arrival-time">${firstJourney.arrivalTime}</span>
-      //       </h3>
-      //       <div class="total-time">
-      //       <h3 class="duration"><span class="figure">${firstJourney.duration}</span>mins</h2>
-      //       </div>
-      //    </div>
-      // </section>
-      // <div class="fare-info">
-      //    <h4 class="fare-cost">£<span class="figure">${firstJourney.totalCost}</span></h4>
-      // </div>
-      // </div>
-      // ${testingMarkup.join(' ')}
-      // </div> 
-      // `      
       resultsContainer.innerHTML = '';
       resultsContainer.insertAdjacentHTML('afterbegin',testingMarkup.join('\n'));
    }
@@ -272,17 +186,21 @@ const loadJourney = async function(link){
 }
 
 
-loadJourney();
+// loadJourney();
 
 btn.addEventListener('click',function(e){
    e.preventDefault();
-   // if(!startLocationfield.textContent||!arrivalLocationfield.textContent){
-   //    alert('💩')
-   // }
+
+   startPoint = startLocationfield.textContent;
+   endPoint = arrivalLocationfield.textContent;
+   if(!startLocationfield.textContent||!arrivalLocationfield.textContent){
+      loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
+
+   }
 
    // console.log(startLocationfield.textContent,arrivalLocationfield.textContent)
 
-   // else{
-      // loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
-   // }
+   else{
+      loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
+   }
 })
