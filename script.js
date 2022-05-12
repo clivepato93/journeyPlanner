@@ -8,7 +8,7 @@ const resultsContainer = document.querySelector('.results');
 const getHour = (date) => `${new Date(date).getHours()}`.padStart(2,0);
 const getMinutes = (date) => `${new Date(date).getMinutes()}`.padStart(2,0);
 // Price of travel
-const getPrice = (value) => +(`${value}`.slice(0,-2)+'.'+`${value}`.slice(-2))
+const getPrice = (value) => `${value}`.slice(0,-2)+'.'+`${value}`.slice(-2)
 const btn = document.querySelector('.sub');
 
 const startLocationfield = document.querySelector(".startAddress");
@@ -43,14 +43,12 @@ const renderInstructionMarkup = (journey)=>{
                <h2>
                   <span class="depature-time">${journey.departureTime}</span> to 
                   <span class="arrival-time">${journey.arrivalTime}</span>
+                  <span class="figure">${journey.duration}</span>mins
                </h2>
-               <div class="total-time">
-               <h2 class="duration"><span class="figure">${journey.duration}</span>mins</h2>
-               </div>
             </div>
          </section>
       <div class="fare-info">
-       <h2 class="fare-cost">${journey.totalCost?'£':''}<span class="figure">${journey.totalCost?journey.totalCost:''}
+       <h2 class="fare-cost">${journey.totalCost?'£':''}<span class="figure">${journey.totalCost?journey.totalString:''}
       </span></h2>
       </div>
       </div>
@@ -62,23 +60,21 @@ const renderInstructionMarkup = (journey)=>{
       const instruction = `
       <div class="instruction">
          <div class="instruction-title">
-            <h2>
-               <span class="mode">${!journey.mode.includes('walk')?journey.mode:''} </span>
-               <span class="detailed">${journey.detailed} </span>
-               <span class="detailed">${journey.stopsString}</h2>
+            
+            <h2 class="mode">${!journey.mode.includes('walk')?journey.mode:''}</h2>
+            <h2 class="detailed">${journey.detailed} </h2>
+            <h2 class="detailed">${journey.stopsString}</h2>
                </div>
             <div class="start-point">
-                <h3 class="duration"><span class="figure">${journey.departureName} ${journey.departureplatformStopName} </span></h3>
+                <h2 class="duration"><span class="figure">${journey.departureName} ${journey.departureplatformStopName} </span></h2>
             </div>
          <ul class="steps">
             <div class="times">
-               <h3>
+               <h2>
                   <span class="depature-time">${journey.departureTime}</span>
                    to <span class="arrival-time">${journey.arrivalTime}</span>
-               </h3>
-                 <div class="total-time">
-                     <h3 class="duration"><span class="figure">${journey.duration} </span>mins</h3>
-                 </div>
+                   <span class="figure">${journey.duration} mins</span>
+               </h2>
             </div>       
       `
 
@@ -117,7 +113,7 @@ const renderInstructionMarkup = (journey)=>{
 
 const loadJourney = async function(link){
    try{
-      const res = await fetch(link)
+      const res = await fetch(url2)
       
       const data = await res.json();
 
@@ -131,7 +127,8 @@ const loadJourney = async function(link){
          const depatureMinutes = getMinutes(journey.startDateTime);
          const arrivalHours = getHour(journey.arrivalDateTime);
          const arrivalMinutes = getMinutes(journey.arrivalDateTime);
-         const totalFare = journey.fare?getPrice(journey.fare.totalCost):0;
+         const totalFare = journey.fare?+getPrice(journey.fare.totalCost):0;
+         const totalString = journey.fare?getPrice(journey.fare.totalCost):0;
          // console.log(journey)
 
          journey = {
@@ -141,6 +138,7 @@ const loadJourney = async function(link){
             arrivalTime:`${arrivalHours}:${arrivalMinutes}`,
             duration:journey.duration,
             totalCost:totalFare,
+            totalString:totalString
          }
 
          // console.log(journey)
@@ -274,7 +272,7 @@ const loadJourney = async function(link){
 }
 
 
-// loadJourney();
+loadJourney();
 
 btn.addEventListener('click',function(e){
    e.preventDefault();
@@ -285,6 +283,6 @@ btn.addEventListener('click',function(e){
    // console.log(startLocationfield.textContent,arrivalLocationfield.textContent)
 
    // else{
-      loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
+      // loadJourney(`https://api.tfl.gov.uk/Journey/JourneyResults/${startLocationfield.value}/to/${arrivalLocationfield.value}`)
    // }
 })

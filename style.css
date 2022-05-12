@@ -42,7 +42,7 @@ body{
 }
 
 .container{
-    border: 2px solid white;
+    /* border: 2px solid white; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +59,11 @@ body{
 
 }
 
+.name{
+    font-size: 1.5rem;
+    /* font-size: 1rem; */
+}
+
 .info{
     display: flex;
     justify-content: space-between;
@@ -73,9 +78,8 @@ body{
 
 
 .details{
-    
-
-
+    /* font-size: 1rem; */
+    display:flex ;
     justify-content: space-between;
     margin-left: .5rem;
     margin-bottom:-.5rem;
@@ -87,6 +91,14 @@ form{
     justify-content: space-between;
 }
 
+.times h2{
+    font-size: 1.6rem;
+}
+
+.duration{
+    font-size: 2rem;
+}
+
 .inputs{
     display: flex;
     flex-direction: column;
@@ -94,9 +106,9 @@ form{
     width: 100%;
 }
 
-/* .inputfield:nth-of-type(2){
-    align-self: flex-end;
-} */
+.direction{
+    font-size: 1.4rem;
+}
 
 .sub{
     min-width: 10rem;
@@ -115,17 +127,22 @@ form{
 
 }
 
+.instruction{
+    background-color: var(--Very-dark-blue);
+    border:3px solid var(--desaturated-blue);
+    border-radius: 1rem;
+    padding: var(--padding);
+    margin: 1rem 0;
+}
 
 
 h1{
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
+    /* font-weight: 300; */
+    font-size: 2rem;
+
 }
 
-h1:last-child{
-    margin-left: 0;
-}
+
 
 h2{
     font-weight: 300;
@@ -162,9 +179,12 @@ h2{
 }
 
 .result{
+    padding: var(--padding);
     width: 100%;
-    border: 1px solid pink;
+    border: 2px solid var(--Blue);
+    border-radius: .4rem;
     /* display: flex;    */
+    background-color: var(--Dark-blue);
     /* flex-direction: column; */
     /* color: aquamarine; */
 }
@@ -180,13 +200,18 @@ li{
 }
 
 .search{
-    border: 1px solid white;
+    /* border: 1px solid white; */
     border-radius: 50%;
     width:4rem;
     height: 4rem;
 }
 
 @media screen and (min-width:610px){   
+    .name{
+        font-size: auto;
+        /* font-size: 1rem; */
+    }
+    
     .inputs{
         flex-direction: row;
     }
