@@ -134,5 +134,4 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Frontend Mentor - [@clivepato93](https://www.frontendmentor.io/profile/clivepato93)
 - Twitter - [@ciccio_ct93](https://www.twitter.com/ciccio_ct93)
