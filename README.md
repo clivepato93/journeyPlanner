@@ -123,7 +123,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Resource 1](https://www.ninjaunits.com/converters/pixels/pixels-rem/) - This helped me for calculating using rem units without the next to adjust the default font size 
+- [Resource 1](https://www.ninjaunits.com/converters/pixels/pixels-rem/) - This helped me for calculating using rem units without the need to adjust the default font size
 
 
 - [Resource 2](https://www.picturetopeople.org/text_generator/others/transparent/transparent-text-generator.html) - This helped me to create my logo
