@@ -2,6 +2,8 @@
 
 
 Desktop Preview
+
+
 ![Desktop preview for the Journey Planner Project](./images/desktop-preview.png)
 
 
@@ -114,3 +116,23 @@ I learned how to retrieve information from a complex API as it contained many ob
          
         })
 ```
+
+### Continued development
+
+Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+
+### Useful resources
+
+- [Resource 1](https://www.ninjaunits.com/converters/pixels/pixels-rem/) - This helped me for calculating using rem units without the next to adjust the default font size 
+
+
+- [Resource 2](https://www.picturetopeople.org/text_generator/others/transparent/transparent-text-generator.html) - This helped me to create my logo
+
+![](./images/picturetopeople.org-bbc994b5a587ed9113fcaa2aba692082f231936957ac1b8396.png)
+
+
+
+## Author
+
+- Frontend Mentor - [@clivepato93](https://www.frontendmentor.io/profile/clivepato93)
+- Twitter - [@ciccio_ct93](https://www.twitter.com/ciccio_ct93)
