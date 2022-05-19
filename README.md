@@ -1,6 +1,14 @@
 # Journey Planner - How to plan your travel around London
 
-![Design preview for the Interactive rating component coding challenge](./images/desktop-preview.png)
+
+Desktop Preview
+![Design preview for the Journey Planner Project](./images/desktop-preview.png)
+
+
+Mobile Preview
+[Design preview for the Journey Planner Project](./images/mobile-preview.png)
+
+
 
 ## Welcome! 👋
 
