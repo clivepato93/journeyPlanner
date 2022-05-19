@@ -6,6 +6,8 @@ Desktop Preview
 
 
 Mobile Preview
+
+
 ![Mobile preview for the Journey Planner Project](./images/mobile-preview.png)
 
 
