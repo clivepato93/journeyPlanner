@@ -2,11 +2,11 @@
 
 
 Desktop Preview
-![Design preview for the Journey Planner Project](./images/desktop-preview.png)
+![Desktop preview for the Journey Planner Project](./images/desktop-preview.png)
 
 
 Mobile Preview
-[Design preview for the Journey Planner Project](./images/mobile-preview.png)
+![Mobile preview for the Journey Planner Project](./images/mobile-preview.png)
 
 
 
