@@ -121,6 +121,60 @@ I learned how to retrieve information from a complex API as it contained many ob
 
 Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
 
+This by all means isn't finished project I have some further ideas in which I would like to implement such as:
+
+User Location finder
+This would be used when the customer doesn't know where they are
+
+the feature would be To the right of the depature postcode input field in the form of a button
+- ![](./images/desktop-preview.png) 
+
+once the button is pressed the input field will have the users postcode
+
+the functionality of this will be achieved through the use of navigator.geolocation API
+
+the coordinates the geolocation will be used to make another call to reverseGeocoding
+
+```js
+     fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+  .then(res => {
+    if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+    return res.json();
+  })
+  .then(data => {
+    console.log(data);
+
+   // here's the return result of the API call with the example lat 51.5344 & lng -0.0694 of 
+
+      {statename: {…}, distance: '0.052', elevation: '20', osmtags: {…}, state: 'England', …}
+   adminareas: {admin6: {…}, admin8: {…}, admin5: {…}}
+   alt: {loc: Array(5)}
+   altgeocode: "BETHNAL-AUDXK"
+   city: "London"
+   class: "20 mph"
+   confidence: "0.9"
+   country: "United Kingdom"
+   distance: "0.052"
+   elevation: "20"
+   geocode: "LONDON-AUDXK"
+   geonumber: "3154695784172"
+   inlatt: "51.53440"
+   inlongt: "-0.06940"
+   latt: "51.53412"
+   longt: "-0.07001"
+   osmtags: {wikidata: 'Q205679', website: 'https://hackney.gov.uk/', name: 'London Borough of  Hackney', ISO3166_2: 'GB-HCK', ref_gss: 'E09000012', …}
+   poi: {poilat: '51.53379', network: 'tfl_cycle_hire', name: 'Queensbridge Road',  official_name: 'Queensbridge Road, Haggerston', official_ref: '536', …}
+   postal: "E28PB"
+   prov: "UK"
+   region: "London, England"
+   remaining_credits: {}
+   staddress: "Queensbridge Road"
+   state: "England"
+   statename: {}
+   stnumber: {}
+   timezone: "Europe/London"
+```
+
 ### Useful resources
 
 - [Resource 1](https://www.ninjaunits.com/converters/pixels/pixels-rem/) - This helped me for calculating using rem units without the need to adjust the default font size
