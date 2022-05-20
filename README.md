@@ -133,7 +133,7 @@ once the button is pressed the input field will have the users postcode
 
 the functionality of this will be achieved through the use of navigator.geolocation API
 
-the coordinates the geolocation will be used to make another call to reverseGeocoding
+the coordinates the geolocation will be used to make another to the reverseGeocoding API
 
 ```js
      fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
