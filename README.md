@@ -45,7 +45,7 @@ Users should be able to:
 
 ### What I learned
 
-I learned how to retrieve information from a complex API as it contained many objects with arrays etc.
+I learned how to retrieve information from a complex API as it contained many objects within arrays & vice versa etc.
 
 ```js
 
