@@ -127,7 +127,7 @@ User Location finder
 This would be used when the customer doesn't know where they are
 
 the feature would be To the right of the depature postcode input field in the form of a button
-- ![](./images/desktop-preview.png) 
+- ![](./images/depature-postcode.png) 
 
 once the button is pressed the input field will have the users postcode
 
@@ -144,7 +144,7 @@ the coordinates the geolocation will be used to make another call to reverseGeoc
   .then(data => {
     console.log(data);
 
-   // here's the return result of the API call with the example lat 51.5344 & lng -0.0694 of 
+   // here's the return result of the API call with the example lat 51.5344 & lng -0.0694
 
       {statename: {…}, distance: '0.052', elevation: '20', osmtags: {…}, state: 'England', …}
    adminareas: {admin6: {…}, admin8: {…}, admin5: {…}}
